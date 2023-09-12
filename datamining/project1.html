@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Website</title>
+		<link href="style.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<div id="header">
+			<h1>louisph.com</h1>
+			<div id="navbar">
+				<a href="index.html"><button>Home</button></a>
+				<a href="portfolio.html"><button>Portfolio</button></a>
+			</div>
+		</div>
+		<h3>Project 1</h3>
+		<p>
+			The goal of this project is to find what places in the country have the best and worst weather. It uses a database of 8.6 million weather events recorded nationwide across seven years. The importance of this data is primarily to real estate: housing in areas with better weather should become more desirable. 
+		</p>
+		<h4>Links</h4>
+		<p>
+			Data: https://www.kaggle.com/datasets/sobhanmoosavi/us-weather-events
+			Jupyter Notebook: https://github.com/kinglouisph/datamining1
+		</p>
+		<h4>Methodology</h4>
+		<p>
+		The data I used for this project is a large database of nationwide weather events from a period of seven years. The uncompressed file size is very big, making processing the data very slow. This was not at all helped by the fact that I was using python. </p><p>
+			The first thing I did was create a new table with the sums of results of previous tables. The new table contained total amounts of rainfall, snowfall, etc, and the lengths of time (in seconds) affected by rain, snow, etc. </p><p>
+			This list lists the data points by airport. Airports are used because city and zip code contain many nulls, and Airports were the smallest "unit". averaging scores by county was another option but that felt like blurring the data for no reason, since counties could just be pulled from the airports.</p><p>
+			The next thing I did was use this list to find the maxima and minima in each catigory. This was very straightforward with the new list. Note that the below values are per year (tolals / 7), and the days of precipitation represent contiguous days of weather, not the number of days that the weather occurred. That number is likely double or triple the amount shown.
+		</p>
+		<h4>Maxima</h4>
+		<table>
+			<tr><th>Parameter</th><th>Airport</th><th>Value</th></tr>
+		
+<tr><td>inCold</td><td>K04V</td><td>0.0</td></tr>
+<tr><td>daysCold</td><td>KAWN</td><td>173.4</td></tr>
+<tr><td>inFog</td><td>K04V</td><td>0.0</td></tr>
+<tr><td>daysFog</td><td>KMWN</td><td>68.98</td></tr>
+<tr><td>inHail</td><td>K04V</td><td>0.0</td></tr>
+<tr><td>daysHail</td><td>KGOV</td><td>0.97</td></tr>
+<tr><td>inRain</td><td>KUIL</td><td>206.74</td></tr>
+<tr><td>daysRain</td><td>KRNV</td><td>67.2</td></tr>
+<tr><td>inSnow</td><td>KMDS</td><td>132.27</td></tr>
+<tr><td>daysSnow</td><td>K3TH</td><td>62.34</td></tr>
+<tr><td>inStorm</td><td>K04V</td><td>0.0</td></tr>
+<tr><td>daysStorm</td><td>KMWN</td><td>169.15</td></tr>
+<tr><td>inPrecipitation</td><td>KJRB</td><td>7232.15</td></tr>
+<tr><td>daysPrecipitation</td><td>K5H4</td><td>34.87</td></tr>	
+
+		</table>
+		<h4>Minima</h4>
+		<table>
+
+<tr><td>inCold</td><td>K04V</td><td>0.0</td></tr>
+<tr><td>daysCold</td><td>KLAS</td><td>0.0</td></tr>
+<tr><td>inFog</td><td>K04V</td><td>0.0</td></tr>
+<tr><td>daysFog</td><td>KJGG</td><td>0.0</td></tr>
+<tr><td>inHail</td><td>K04V</td><td>0.0</td></tr>
+<tr><td>daysHail</td><td>K04V</td><td>0.0</td></tr>
+<tr><td>inRain</td><td>KJGG</td><td>0.0</td></tr>
+<tr><td>daysRain</td><td>KJGG</td><td>0.0</td></tr>
+<tr><td>inSnow</td><td>KJGG</td><td>0.0</td></tr>
+<tr><td>daysSnow</td><td>KJGG</td><td>0.0</td></tr>
+<tr><td>inStorm</td><td>K04V</td><td>0.0</td></tr>
+<tr><td>daysStorm</td><td>KSPA</td><td>0.0</td></tr>
+<tr><td>inPrecipitation</td><td>KEMM</td><td>0.0</td></tr>
+<tr><td>daysPrecipitation</td><td>KEMM</td><td>0.0</td></tr>
+		</table>
+		<p>
+			Note that KJGG is on the coast of Virginia, and there is no possible way that there was no rain there for seven years. It seems to only have recorded some severe cold, less than an hour of storm, and 200in of miscillaneous precipitation. This minima data does not seem trustworthy. 	
+				
+
+	</body>
+</html>
