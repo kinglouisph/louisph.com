@@ -31,44 +31,106 @@
 		<h4>Maxima</h4>
 		<table>
 			<tr><th>Parameter</th><th>Airport</th><th>Value</th></tr>
-		
-<tr><td>inCold</td><td>K04V</td><td>0.0</td></tr>
+	
 <tr><td>daysCold</td><td>KAWN</td><td>173.4</td></tr>
-<tr><td>inFog</td><td>K04V</td><td>0.0</td></tr>
 <tr><td>daysFog</td><td>KMWN</td><td>68.98</td></tr>
-<tr><td>inHail</td><td>K04V</td><td>0.0</td></tr>
 <tr><td>daysHail</td><td>KGOV</td><td>0.97</td></tr>
 <tr><td>inRain</td><td>KUIL</td><td>206.74</td></tr>
 <tr><td>daysRain</td><td>KRNV</td><td>67.2</td></tr>
 <tr><td>inSnow</td><td>KMDS</td><td>132.27</td></tr>
 <tr><td>daysSnow</td><td>K3TH</td><td>62.34</td></tr>
-<tr><td>inStorm</td><td>K04V</td><td>0.0</td></tr>
 <tr><td>daysStorm</td><td>KMWN</td><td>169.15</td></tr>
 <tr><td>inPrecipitation</td><td>KJRB</td><td>7232.15</td></tr>
 <tr><td>daysPrecipitation</td><td>K5H4</td><td>34.87</td></tr>	
 
 		</table>
+		<p>
+			KJRB (Washington state) apparently got <b>~0.8 miles</b> of misc. precipitation over a 7 year period. KUIL (also Washington State) also got 200in of rain per year, despite Washington state averaging ~35in or rain per year (google). KMWN (Mount Washington, NH) apparently is suffering from a storm ~46% of the time.
+
 		<h4>Minima</h4>
 		<table>
+			<tr><th>Parameter</th><th>Airport</th><th>Value</th></tr>
 
-<tr><td>inCold</td><td>K04V</td><td>0.0</td></tr>
 <tr><td>daysCold</td><td>KLAS</td><td>0.0</td></tr>
-<tr><td>inFog</td><td>K04V</td><td>0.0</td></tr>
 <tr><td>daysFog</td><td>KJGG</td><td>0.0</td></tr>
-<tr><td>inHail</td><td>K04V</td><td>0.0</td></tr>
 <tr><td>daysHail</td><td>K04V</td><td>0.0</td></tr>
 <tr><td>inRain</td><td>KJGG</td><td>0.0</td></tr>
 <tr><td>daysRain</td><td>KJGG</td><td>0.0</td></tr>
 <tr><td>inSnow</td><td>KJGG</td><td>0.0</td></tr>
 <tr><td>daysSnow</td><td>KJGG</td><td>0.0</td></tr>
-<tr><td>inStorm</td><td>K04V</td><td>0.0</td></tr>
 <tr><td>daysStorm</td><td>KSPA</td><td>0.0</td></tr>
 <tr><td>inPrecipitation</td><td>KEMM</td><td>0.0</td></tr>
 <tr><td>daysPrecipitation</td><td>KEMM</td><td>0.0</td></tr>
+
 		</table>
 		<p>
-			Note that KJGG is on the coast of Virginia, and there is no possible way that there was no rain there for seven years. It seems to only have recorded some severe cold, less than an hour of storm, and 200in of miscellaneous precipitation. This minima data does not seem trustworthy. 	
-				
+			Note that KJGG (Coastal Virginia) apparently had no rain for seven years. It seems to only have recorded some severe cold, less than an hour of storm, and 200in of miscellaneous precipitation.	
+		</p>
+
+		<p>
+			Clearly these results are not trustworthy. The next thing I did was try to take the results at percentiles, in the hope that they would have less junk data. The results for days of precipitation, however, are much more reasonable, and much more likely to be correct.
+		</p>
+		<h4>Medians</h4>
+		<table>
+	
+<tr><td>daysCold</td><td>KCRX</td><td>1.57</td></tr>
+<tr><td>daysFog</td><td>KISO</td><td>6.369</td></tr>
+<tr><td>daysHail</td><td>KDCY</td><td>0.0</td></tr>
+<tr><td>inRain</td><td>KCQT</td><td>31.735</td></tr>
+<tr><td>daysRain</td><td>KPTN</td><td>16.338</td></tr>
+<tr><td>inSnow</td><td>KLFI</td><td>0.721</td></tr>
+<tr><td>daysSnow</td><td>KMTN</td><td>2.398</td></tr>
+<tr><td>daysStorm</td><td>KMEZ</td><td>0.019</td></tr>
+<tr><td>inPrecipitation</td><td>KMSS</td><td>5.717</td></tr>
+<tr><td>daysPrecipitation</td><td>KOKV</td><td>0.186</td></tr>	
+		</table>
+		<p>
+			These results seem reasonable! The median yearly inches of rainfall aligns with the 
+
+		<h4>25th Percentiles</h4>
+		<table>
+			<tr><th>Parameter</th><th>Airport</th><th>Value</th></tr>
+<tr><td>daysCold</td><td>KTPA</td><td>0.53</td></tr>
+<tr><td>daysFog</td><td>KEHR</td><td>4.124</td></tr>
+<tr><td>daysHail</td><td>KDCY</td><td>0.0</td></tr>
+<tr><td>inRain</td><td>KSHL</td><td>10.112</td></tr>
+<tr><td>daysRain</td><td>KMWN</td><td>9.655</td></tr>
+<tr><td>inSnow</td><td>KEDW</td><td>0.044</td></tr>
+<tr><td>daysSnow</td><td>KBRO</td><td>0.188</td></tr>
+<tr><td>daysStorm</td><td>KFKN</td><td>0.001</td></tr>
+<tr><td>inPrecipitation</td><td>KBLU</td><td>1.088</td></tr>
+<tr><td>daysPrecipitation</td><td>KOQN</td><td>0.047</td></tr>
+		</table>
+
+		<p>
+			These results still seem like junk, but much less so than the minima. The data on snow is believable, but I still find the annual rainfall number suspicious.
+		</p>
+		<h4>90th Percentiles</h4>
+		<table>
+		
+<tr><td>daysCold</td><td>KFSW</td><td>10.505</td></tr>
+<tr><td>daysFog</td><td>KMQS</td><td>13.187</td></tr>
+<tr><td>daysHail</td><td>KHQZ</td><td>0.006</td></tr>
+<tr><td>inRain</td><td>KJAX</td><td>83.797</td></tr>
+<tr><td>daysRain</td><td>KSGH</td><td>26.877</td></tr>
+<tr><td>inSnow</td><td>KHDN</td><td>5.438</td></tr>
+<tr><td>daysSnow</td><td>KBHK</td><td>15.307</td></tr>
+<tr><td>daysStorm</td><td>K8D3</td><td>0.432</td></tr>
+<tr><td>inPrecipitation</td><td>KCTZ</td><td>25.665</td></tr>
+<tr><td>daysPrecipitation</td><td>KMCN</td><td>0.611</td></tr>	
+
+		</table>
+
+		<p>
+			These results look reasonable. The KJAX rainfall numbers may look high but it's in florida, so that's to be expected. The reason I hypothesize this is more accurate than the 25 percentile results is that it seems much easier to underestimate weather events by simply not recording them than it is to overestimate. The errors used to overestivate (misreading measurements, faulty equipment, etc) also are more likely to work both ways. Still, the 95 percentile data looked suspicious so I used 90 percintile instead.
+
+
+		</p>
+
+
+
+		
+
 
 	</body>
 </html>
