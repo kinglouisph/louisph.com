@@ -16,15 +16,33 @@
 		<p>
 			The goal of this project is to find what places in the country have the best and worst weather. It uses a database of 8.6 million weather events recorded nationwide across seven years. The importance of this data is primarily to real estate: housing in areas with better weather should become more desirable. 
 		</p>
-		<h4>Links</h4>
+		<h4>Links (Clickable)</h4>
 		<p>
-			Data: https://www.kaggle.com/datasets/sobhanmoosavi/us-weather-events
-			Jupyter Notebook: https://github.com/kinglouisph/datamining1
+		<a href="https://www.kaggle.com/datasets/sobhanmoosavi/us-weather-events">Data: https://www.kaggle.com/datasets/sobhanmoosavi/us-weather-events</a><br>
+		Jupyter Notebook: <a href="https://github.com/kinglouisph/datamining1">https://github.com/kinglouisph/datamining1</a>
 		</p>
+		<h4>Data</h4>
+		<p>
+			The data used for this project is a nationwide database of over 8.6 million weather events over 6 years.
+		</p>
+		<p>
+			The features of this database I am using are:<br>
+			<b>Type</b>: The type of weather. Rain, snow, etc.<br>
+			<b>StartTime(UTC)</b> and <b>EndTime(UTC)</b>: These will be used to calculate durations of weather.<br>
+			<b>Precipitation(in)</b>: This will be used to calculate annual rainfall.<br>
+			<b>AirportCode</b>: This will be used to determine location.
+		</p>
+		<p>
+			There was also several features that were ignored, including: <b>EventId</b>, <b>Severity</b>, <b>TimeZone</b>, <b>LocationLat</b>, <b>LocationLng</b>, <b>City</b>, <b>County</b>, <b>State</b>, and <b>ZipCode</b>
+		</p>
+
+		<p>
+			The primary limitation of this data is that it is just weather events and not climate; it can't indicate things like temperature. This project will therefore focus on precipitation, and finding areas with a balanced good amount of precipitation, along with more extreme areas.
+
 		<h4>Methodology</h4>
 		<p>
-		The data I used for this project is a large database of nationwide weather events from a period of seven years. The uncompressed file size is very big, making processing the data very slow. This was not at all helped by the fact that I was using python. </p><p>
-			The first thing I did was create a new table with the sums of results of previous tables. The new table contained total amounts of rainfall, snowfall, etc, and the lengths of time (in seconds) affected by rain, snow, etc. </p><p>
+		The data I used for this project is over a gigabyte in size, making processing the data very slow. This was not at all helped by the fact that I was using python. </p><p>
+			The first thing I did was create a new table with the sums of results of previous tables. This is done because the original dataset is extremely slow, and this organizes the data I need by airport code. The new table contained total amounts of rainfall, snowfall, etc, and the lengths of time (in seconds) affected by rain, snow, etc. </p><p>
 			This list lists the data points by airport. Airports are used because city and zip code contain many nulls, and Airports were the smallest "unit". averaging scores by county was another option but that felt like blurring the data for no reason, since counties could just be pulled from the airports.</p><p>
 			The next thing I did was use this list to find the maxima and minima in each catigory. This was very straightforward with the new list. Note that the below values are per year (tolals / 7), and the days of precipitation represent contiguous days of weather, not the number of days that the weather occurred. That number is likely double or triple the amount shown.
 		</p>
