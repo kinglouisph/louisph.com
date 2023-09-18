@@ -14,7 +14,7 @@
 		</div>
 		<h3>Project 1</h3>
 		<p>
-			The goal of this project is to find what places in the country have the best and worst weather. It uses a database of 8.6 million weather events recorded nationwide across seven years. The importance of this data is primarily to real estate: housing in areas with better weather should become more desirable. 
+			The goal of this project is to find what places in the country have the best and worst weather. It uses a database of 8.6 million weather events recorded nationwide across seven years. The importance of this data is primarily to real estate: housing in areas with better weather should become more desirable. People do not want to move places with bad weather.
 		</p>
 		<h4>Links (Clickable)</h4>
 		<p>
@@ -37,12 +37,12 @@
 		</p>
 
 		<p>
-			The primary limitation of this data is that it is just weather events and not climate; it can't indicate things like temperature. This project will therefore focus on precipitation, and finding areas with a balanced good amount of precipitation, along with more extreme areas.
+			The primary limitation of this data is that it is just weather events and not climate; it can't indicate things like temperature. This project will therefore focus on precipitation, and finding areas with a good, balanced amount of precipitation, along with more extreme areas.
 
 		<h4>Methodology</h4>
 		<p>
 		The data I used for this project is over a gigabyte in size, making processing the data very slow. This was not at all helped by the fact that I was using python. </p><p>
-			The first thing I did was create a new table with the sums of results of previous tables. This is done because the original dataset is extremely slow, and this organizes the data I need by airport code. The new table contained total amounts of rainfall, snowfall, etc, and the lengths of time (in seconds) affected by rain, snow, etc. </p><p>
+			The first thing I did was create a new table with the sums of entries of previous table. This is done because the original dataset is extremely slow, and this organizes the data I need by airport code. The new table contained total amounts of rainfall, snowfall, etc, and the lengths of time (in seconds) affected by rain, snow, etc. </p><p>
 			This list lists the data points by airport. Airports are used because city and zip code contain many nulls, and Airports were the smallest "unit". averaging scores by county was another option but that felt like blurring the data for no reason, since counties could just be pulled from the airports.</p><p>
 			The next thing I did was use this list to find the maxima and minima in each catigory. This was very straightforward with the new list. Note that the below values are per year (tolals / 7), and the days of precipitation represent contiguous days of weather, not the number of days that the weather occurred. That number is likely double or triple the amount shown.
 		</p>
@@ -140,14 +140,51 @@
 		</table>
 
 		<p>
-			These results look reasonable. The KJAX rainfall numbers may look high but it's in florida, so that's to be expected. The reason I hypothesize this is more accurate than the 25 percentile results is that it seems much easier to underestimate weather events by simply not recording them than it is to overestimate. The errors used to overestivate (misreading measurements, faulty equipment, etc) also are more likely to work both ways. Still, the 95 percentile data looked suspicious so I used 90 percintile instead.
+			These results look reasonable. The KJAX rainfall numbers may look high but it's in florida, so that's to be expected. The reason I hypothesize this is more accurate than the 25 percentile results is that it seems much easier to underestimate weather events by simply not recording them than it is to overestimate. The errors used to overestivate (misreading measurements, faulty equipment, etc) also are more likely to work both ways. Still, the 95 percentile data looked suspicious so I used 90 percentile instead.
 
 
 		</p>
 
+		<h4>Recorded annual inches of rainfall</h4>
+		<img src="inRainBarPlot.png">
+		<p>A sizable amount of airports simply did not record any rainfall. This almost certainly skews the minima and lower percentiles data.
+		<h4>Recorded days of rainfall</h4>
+		<img src="daysRainBarPlot.png">
+		<p>Still, some stations did not record any days of rainfall. Perhaps these are places where it only snows? Every airport here should have atleast one weather event.
+		</p>
+		<h4>Days and inches of rain scatterplot</h4>
+		<img src="rainScatter.png">
+		<p>
+		Weaker correlation than I expected. Weird outliers and places where inches weren't recorded are clearly visible, although it mostly looks reasonable. Units for this one are weird; inches and seconds for the whole 7 years.
+		</p>
+		<h4>Filtering to find places with perfect weather</h4>
+		<p>
+			A good way to find places with good weather is to filter out places with bad weather. I decided to do this by adding arbitrary thresholds the airports must meet or be filtered out. I tweaked these until I had three results.
+		</p>
+		<p>
+		The thresholds were:<br>
+		Less than 0.5 days of severe cold.<br>
+		over 25 inches of rain (to avoid overly dry areas).<br>
+		Less than 35 inches of rain (because rain and humidity are annoying).<br>
+		Over 5 inches of snow annually (because snow is nice occasionally).<br>
+		Less than 18 inches of snow (becuase too much snow is a problem).<br>
 
+		From this I was able to find three places with suppossedly ideal precipitation:<br>
+		KMCD: Mackinac Island, Michigan<br>
+		KPUW: Whitman County, Washington<br>
+		KRQB: Big Rapids, Michigan<br>
+		<br>
+		From this, the northern and northwestern stated seem to have the most balanced weather, with michigan appearing twice. The result of this filtering is clear: <b>Michigan</b> is the state with the best weather. It has just enough rain and snow to be balanced without being extreme. Of course, michigan is cold, but apparently it (the two airports mentioned) do not have very much severe cold. I think this result makes sense. It's climate is temperate and it won't give you sunburn like many southern states more typically associated with good weather. Best weather may be a subjective thing, but I believe I found a good answer
+		</p>
 
-		
+		<h4>Impact</h4>
+		<p>
+			An impact this data may have is that property in some of the mentioned areas could become more expensive, benefitting property holders and the community at large (unless they pay property taxes based on real estate value). Any real impact, however, is exceedingly unlikely since this is a school project and I'm not publishing it. 
+		</p>
+		<h4>Counclusion</h4>
+		<p>
+			Despite all the junk data, I was eventually able to decide that the northwestern states (including Michigan and Washington) generally had the best weather, for having an ideal amount of rain and snow.
+		</p>
 
 
 	</body>
