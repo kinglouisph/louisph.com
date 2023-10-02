@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Website</title>
+		<link href="style.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<div id="header">
+			<h1>louisph.com</h1>
+			<div id="navbar">
+				<a href="index.html"><button>Home</button></a>
+				<a href="portfolio.html"><button>Portfolio</button></a>
+			</div>
+		</div>
+		<h3>Project 2</h3>
+		<p>
+			The goal of this project is to develop a classification model to detect heart disease.
+		</p>
+		<h4>Links (Clickable)</h4>
+		<p>
+		<a href="https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset">https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset</a><br>
+		Jupyter Notebook: <a href="https://github.com/kinglouisph/datamining2">https://github.com/kinglouisph/datamining2</a>
+		</p>
+		<h4>Data</h4>
+		<p>
+			The data used for this project is a database of 70000 people 
+		</p>
+		<p>
+			The features of this database I am using are:<br>
+			<b>Age, Height, Weight, Gender, Systolic blood pressure, Diastolic blood pressure, Cholesterol, Glucose, Smoking, Alcohol intake, Physical activity, and Presence of cardiovascular disease</b>.
+		</p>
+
+		<p>
+			There is 70000 rows in this dataset, no nulls. It seems explicitely designed to train classification models off of, which is exactly what I'm doing.
+		<h4>Methodology</h4>
+		<p>
+			The first thing I realized is the weird format of the data. It was just one row, with semicolon separation between the fields. Very weird (It wasn't like that on kaggle), but easily fixable.
+		</p>
+		<p>
+			Next I added one-hot encoding, to make the data easier to process for the models. I also added a bias row of just ones. This was probably unnecessary, but I was being safe, just incase any of the models I tried didn't use any bias by default (I'm fairly certain they all did, mostly I was just worried about TensorFlow and linear regression, even though I almost certainly shouldn't have been).
+		</p>
+		<h4>Neural Networks</h4>
+		<p>
+			My first idea for a model to classify these was to use a neural network. I used the the library TensorFlow for this. I tried 4 models, with mixed results, but overall success. Where not otherwise stated, I used RELU for hidden layers and sigmoid for outputs as activation functions.
+		</p>
+		<h4>Model 1</h4>
+		<p>
+			This model was pretty simple, a hidden layer of 100 neurons. My expectation was that the large number of neurons would be able to pick out lots of patterns of features. I got very mixed results. Sometimes the accuracy was as high as .7, but about hald the time it was just ~.5. The most recent run was .5 so I will declare this model a failure.
+		</p>
+		<h4>Model 2</h4>
+		<p>
+			This model was very simple. Just a single softmax layer for the output, not much more complicated than linear regression. I also got mixed results for this one, sometimes as high is model 1, but again, the most recent run was only .6 on the training set and .5 on the test, so clearly it overfit and underfit at the same time and therefore failed.
+		</p>
+		<h4>Model 3</h4>
+		<p>
+			This was a more complicated model. One 100 width hidden layers, and five 20 width ones.	The idea was that a deeper neural net could pick out more complex patterns. It worked better than the first two, getting consistently accurate results. Most recent run was a .7 for training and a .72 for test, so somehow it overfit less than the super simple one. This model was a clear success.
+		</p>
+		<h4>Model 4</h4>
+		<p>
+			This was the most complicated model I tried. Ten layers, all 40 width. The idea was to replicate the success of model 3, but make it bigger. I also wanted to fix the underfitting that plagued all my previous models, so a more complicated model was necessary. Strangely, it didn't do much better than model 3. The most recent run was .71 on the training set, and .72 on the test. It was still an overall success.
+		</p>
+		<h4>Linear Regression</h4>
+		<p>
+		I trained a linear regression model off the data, and got ~.64 accuracy on the test set (after fixing the outputs by taking the highest one), which is pretty good.	The great thing about linear regression, however, is that the results are interpretable. The most significant sign of heart disease that the model found was age. Cholesterol was the second most important. Also according to this model, Alcohol use <b>reduces</b> the chance of heart disease, although this correlation is likely due to old and sick people drinking less. Being male has a higher weight than smoking.
+		</p>
+		<h4>Adjusted Weights</h4>
+		<table><tr><td>age</td><td>0.09999982432174068</td></tr>
+<tr><td>height</td><td>-0.01806004105769166</td></tr>
+<tr><td>weight</td><td>0.0753784849071363</td></tr>
+<tr><td>ap_hi</td><td>0.018841179566019328</td></tr>
+<tr><td>ap_lo</td><td>0.02538617579450716</td></tr>
+<tr><td>bias</td><td>-0.0</td></tr>
+<tr><td>gender_1.0</td><td>-0.004492089740666628</td></tr>
+<tr><td>gender_2.0</td><td>0.004492089740666739</td></tr>
+<tr><td>cholesterol_1.0</td><td>-0.05728082885731637</td></tr>
+<tr><td>cholesterol_2.0</td><td>-0.0028528167609598106</td></tr>
+<tr><td>cholesterol_3.0</td><td>0.04480008941202573</td></tr>
+<tr><td>gluc_1.0</td><td>0.006509052563392525</td></tr>
+<tr><td>gluc_2.0</td><td>0.009579584773964865</td></tr>
+<tr><td>gluc_3.0</td><td>-0.014529526898897336</td></tr>
+<tr><td>smoke_0.0</td><td>0.0032109831264356273</td></tr>
+<tr><td>smoke_1.0</td><td>-0.003210983126435585</td></tr>
+<tr><td>alco_0.0</td><td>0.0031798482356000155</td></tr>
+<tr><td>alco_1.0</td><td>-0.00317984823560002</td></tr>
+<tr><td>active_0.0</td><td>0.007897336107299969</td></tr>
+<tr><td>active_1.0</td><td>-0.007897336107300038</td></tr>
+		</table>
+
+		<h4>Raw weights</h4>
+		<table><tr><td>age</td><td>4.053085692451839e-05</td></tr>
+<tr><td>height</td><td>-0.002199727538384587</td></tr>
+<tr><td>weight</td><td>0.005236159973421485</td></tr>
+<tr><td>ap_hi</td><td>0.00012233625034142968</td></tr>
+<tr><td>ap_lo</td><td>0.0001346943013636262</td></tr>
+<tr><td>bias</td><td>-2.7755575615628914e-17</td></tr>
+<tr><td>gender_1.0</td><td>-0.009420578045095069</td></tr>
+<tr><td>gender_2.0</td><td>0.009420578045095303</td></tr>
+<tr><td>cholesterol_1.0</td><td>-0.1319955936598206</td></tr>
+<tr><td>cholesterol_2.0</td><td>-0.008311666782551444</td></tr>
+<tr><td>cholesterol_3.0</td><td>0.14030726044237296</td></tr>
+<tr><td>gluc_1.0</td><td>0.018213876065008967</td></tr>
+<tr><td>gluc_2.0</td><td>0.036562588385340496</td></tr>
+<tr><td>gluc_3.0</td><td>-0.05477646445034874</td></tr>
+<tr><td>smoke_0.0</td><td>0.01132686572031567</td></tr>
+<tr><td>smoke_1.0</td><td>-0.011326865720315521</td></tr>
+<tr><td>alco_0.0</td><td>0.014097090074477079</td></tr>
+<tr><td>alco_1.0</td><td>-0.0140970900744771</td></tr>
+<tr><td>active_0.0</td><td>0.019883565960424742</td></tr>
+<tr><td>active_1.0</td><td>-0.01988356596042492</td></tr>
+		</table>
+	<h4>Decision Tree</h4>
+	<p>The decision tree didn't do much better than the linear model did, at about .65 accuracy. It's most important feature, as ranked by first split, was systolic blood pressure. The second most important was age. Unfortunately I couldn't make the output any bigger so only the first 2 rows are available.
+	<img src="p2decisionTree.png">
+
+
+
+	</body>
+</html>
