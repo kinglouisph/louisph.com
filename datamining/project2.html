@@ -19,7 +19,7 @@
 		<h4>Links (Clickable)</h4>
 		<p>
 		<a href="https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset">https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset</a><br>
-		Jupyter Notebook: <a href="https://github.com/kinglouisph/datamining2">https://github.com/kinglouisph/datamining2</a>
+		Jupyter Notebook (Code): <a href="https://github.com/kinglouisph/datamining2">https://github.com/kinglouisph/datamining2</a>
 		</p>
 		<h4>Data</h4>
 		<p>
@@ -31,7 +31,7 @@
 		</p>
 
 		<p>
-			There is 70000 rows in this dataset, no nulls. It seems explicitely designed to train classification models off of, which is exactly what I'm doing.
+			There is 70000 rows in this dataset, no nulls. There is an approximately even split of positives and negatives. It seems explicitely designed to train classification models off of, which is exactly what I'm doing.
 		<h4>Methodology</h4>
 		<p>
 			The first thing I realized is the weird format of the data. It was just one row, with semicolon separation between the fields. Very weird (It wasn't like that on kaggle), but easily fixable.
@@ -61,7 +61,7 @@
 		</p>
 		<h4>Linear Regression</h4>
 		<p>
-		I trained a linear regression model off the data, and got ~.64 accuracy on the test set (after fixing the outputs by taking the highest one), which is pretty good.	The great thing about linear regression, however, is that the results are interpretable. The most significant sign of heart disease that the model found was age. Cholesterol was the second most important. Also according to this model, Alcohol use <b>reduces</b> the chance of heart disease, although this correlation is likely due to old and sick people drinking less. Being male has a higher weight than smoking.
+		I trained a linear regression model off the data, and got ~.64 accuracy on the test set (after fixing the outputs by taking the highest one), which is pretty good.	The great thing about linear regression, however, is that the results are interpretable. The most significant sign of heart disease that the model found was age. Cholesterol was the second most important. Also according to this model, Alcohol and smoking <b>reduce</b> the chance of heart disease, although this correlation is likely due to old and sick people drinking and smoking less. Being male increases the chance slightly as well. 
 		</p>
 		<h4>Adjusted Weights</h4>
 		<table><tr><td>age</td><td>0.09999982432174068</td></tr>
@@ -111,7 +111,15 @@
 	<h4>Decision Tree</h4>
 	<p>The decision tree didn't do much better than the linear model did, at about .65 accuracy. It's most important feature, as ranked by first split, was systolic blood pressure. The second most important was age. Unfortunately I couldn't make the output any bigger so only the first 2 rows are available.
 	<img src="p2decisionTree.png">
-
+	<h4>Conclusions</h4>
+	<p>
+		The diagnosis of heart disease is something that requires a doctor. That's why that models show here only were able to get up to ~.7 accuracy, and underfitting was such a big issue; there's just not the same data here that's available to a doctor. Things that models like these don't really like, like the sounds of a heartbeat or a description of patient symptoms.
+	</p>
+	
+	<h4>Impact</h4>
+	<p>
+		A technology like this could be used for preliminary screenings; on a  high score someone would go see a doctor. The model would need to be made more sensitive to positives, as false negatives could be lethal and false positives are just more money for the hospital. The obvious negative impact is the risk of false diagnosis.
+	</p>
 
 
 	</body>
