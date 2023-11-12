@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Website</title>
+		<link href="style.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<div id="header">
+			<h1>louisph.com</h1>
+			<div id="navbar">
+				<a href="index.html"><button>Home</button></a>
+				<a href="portfolio.html"><button>Portfolio</button></a>
+			</div>
+		</div>
+		<h3>Project 4</h3>
+		<p>
+			The goal of this project is to develop a regression model to predict stock prices.
+		</p>
+		<h4>Links (Clickable)</h4>
+		<p>
+		<a href="https://www.kaggle.com/datasets/uciml/mushroom-classification"></a>https://www.kaggle.com/datasets/uciml/mushroom-classification<br>
+		Jupyter Notebook (Code): <a href="https://github.com/kinglouisph/datamining4">https://github.com/kinglouisph/datamining4</a>
+		</p>
+		<h4>Introduction</h4>
+		<p>
+			What I am attempting to do here is sepatare the mushroom date into groups, identifying the characteristics of these groups, and attempting to identify poison mushrooms.
+		</p>
+		<h4>Clustering</h4>
+		<p>
+			Clustering is separating data into groups (clusters). The primary method used here is k-means. k-means divides the data into k clusters by generating k random points, assigning each datapoint to it's closest point, and then moving each point to the mean of it's cluster. This is repeated until it stabilizes or goes on for too long.
+		</p>
+		<h4>Data</h4>
+		<p>
+			The data I used was a database of mushrooms from kaggle. it contains 23 features (I won't name them all here) and 23 species of mushroom. There is 8124 samples. All the features are categorical. The most important feature is class, poisonous or edible.
+		</p>
+		<h4>Pre-processing</h4>
+		<p>
+			The pre-precessing for this was very simple. The only thing I did was add one-hot encoding.
+		</p>
+		<h4>Principal Component Analysis</h4>
+		<img src="p4pca1.png">
+		<p>
+			There are clearly multiple separate clusters in this dataset. It also looks like a reasonable separations could be made between poisonous and edible data.
+		</p>
+		
+	</body>
+</html>
