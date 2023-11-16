@@ -22,6 +22,9 @@
 		<p>
 			What I am attempting to do here is separate the mushroom date into groups, identify the characteristics of these groups, and identify poison mushrooms.
 		</p>
+		<p>Note: Identifying poison mushrooms is not the primary goal, otherwise I would use test/training groups and a classification algorithm. The models all have poison as an input. Mostly I am using poison to make sure the groups are meaningful.</p>
+		<h4>Impact</h4>
+		<p>An algorithm like this could be used by biologists to determine what different species are. A negative impact is that it could produce misleading results and confuse people</p>
 		<h4>Clustering</h4>
 		<p>
 			Clustering is separating data into groups (clusters). The primary method used here is k-means. k-means divides the data into k clusters by generating k random points, assigning each datapoint to it's closest point, and then moving each point to the mean of it's cluster. This is repeated until it stabilizes or goes on for too long.
@@ -39,6 +42,30 @@
 		<p>
 			There are clearly multiple separate clusters in this dataset. It also looks like a reasonable separations could be made between poisonous and edible data.
 		</p>
-		
+		<h4>k-means variance</h4>
+		<img src="p4kmeansvariance.png">
+		<h4>k-means, k=2</h4>
+		<img src="p4km1.png">
+		<p>These groups generally overlap with the poison one. k-means is likely finding other important features.</p>
+		<h4>k-means k=10</h4>
+		<img src="p4km2.png">
+		<p>There seems to be some similarity with the groups in poison.</p>
+		<img src="p4km3.png">
+		</p>Manually dividing these groups into poisonous or safe, there is definitely overlap. This is a good sign that the groups are meaningful.</p>
+		<h4>k-means k=100</h4>
+		<img src="p4km4.png">
+		<img src="p4km5.png">
+		<p>Used a script this time to determine safe and poisonous groups, I can't spot any errors in this one. The correct map is show below for reference. From this we can conclude that there are almost certainly different groups of mushroom, these groups have meaningful differences, and there are significant differences between poisonous and non-poisonous mushrooms.</p>
+		<img src="p4pca1.png">
+		<h4>Agglomerative clustering, k=20</h4>
+		<img src="p4agglo.png">
+		<p>I tried using agglomerative clustering to see if the results would be different. Absolute garbage. Although the results were somewhat similar, I think many groups simply do not make sense (the central "islands").</p>
+		<h4>Habitats</h4>
+		<img src="p4habitat.png">
+		<p>There is definite overlap in the groups. This is another sign the clusters are based in reality.</p>
+		<h4>Conclusion</h4>
+		<p>
+			This project was an overall success; there are clearly identified groups in the mushroom data. It is likely the species, as they overlap with traits like habitats and poison. An algorithm like this probably would be useful for more complex and practical tasks, although any actual scientists would probably want to use something fancier than k-means.
+		</p>
 	</body>
 </html>
