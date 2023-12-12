@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Website</title>
+		<link href="style.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<div id="header">
+			<h1>louisph.com</h1>
+			<div id="navbar">
+				<a href="index.html"><button>Home</button></a>
+				<a href="portfolio.html"><button>Portfolio</button></a>
+			</div>
+		</div>
+		<h3>Project 5</h3>
+		<h4>Links (Clickable)</h4>
+		<p>
+		<a href="https://www.kaggle.com/datasets/camnugent/california-housing-prices"></a>https://www.kaggle.com/datasets/camnugent/california-housing-prices<br>
+		Jupyter Notebook (Code): <a href="https://github.com/kinglouisph/datamining5">https://github.com/kinglouisph/datamining5</a>
+		</p>
+		
+		<h4>Introduction</h4>
+		<p>
+			The purpose of this project is to predict the prices of housing and determine what factors cause houses to be high priced.
+		</p>
+		<h4>Impact</h4>
+		<p>The obvious positive impact is that this kind of model could be used to make a profit. The downside is that it could make a loss if it makes mistakes. Another potential negative impact is that if models like this are overused by investors all the undervalued houses could get bought out, leaving housing prices higher for regular people.</p>
+		<h4>Data</h4>
+		<p>I'm using a dataset I got from kaggle with ~20000 samples and 10 features. The target variable is median_house_value. I will go into more detail on specific features later. I used a test set size of 10%</p>
+		<h4>Preprocessing</h4>
+		<p>The feature "ocean_proximity" is categorical, so I had to use one-hot encoding for it. I then applied standarization to all the features to help the models converge faster. Finally, there was ~200 rows with null values, which is miniscule so I just dropped them.</p>
+
+		<h4>Model 1</h4>
+		<p>This model is an unregularized degree 3 polynomial regression model. It overfit surprisingly little, with a train MSE of ~.222, and a test MSE of ~.238. It's test R^2 is ~.762, which is very good, but being a polynomial regression model, it has over 500 inputs, and R^2 always increases with inputs so it doesn't mean much.</p>
+
+		<h4>Model 2</h4>
+		<p>This model is just Model 1 but with bayesian ridge regularization applied. It did a little better on the test set, with an MSE of ~.231 and a test R^2 of ~.768.</p>
+
+		<h4>Model 3</h4>
+		<p>This model is just simple linear regression. It unsurprisingly performs the worse out of all the models, with train and test MSEs of ~.356 and ~.340 (atleast it didn't overfit). It's train and test R^2 values are ~.645 and ~.659.</p>
+
+		<h4>Model 4</h4>
+		<p>Model 4 is a neural network with 4 hidden layers, with neuron counts of 100, 100, 80, and 20. It has a train MSE of ~.141 and a test MSE of ~.191. It clearly overfit, but still did better than polynomial regression.</p>
+
+		<h4>Model 5</h4>
+		<p>Model 5 is 8 hidden layers of 50 neurons each. It performed better, with a train MSE of ~.156 and a test MSE of ~.188</p>
+
+		<h4>Model 6</h4>
+		<p>Model 6 is 4 hidden layers of 300, 350, 300, and 30 neurons. It overfit the most with a train MSE of ~.141 and a test MSE of ~.191</p>
+
+		<h4>Model 7</h4>
+		<p>Finally, Model 7 is a neural network with a single hidden layer of 100 neurons. It performed slightly worse than the other neural networks, with a ~.209 train MSE and a ~.224 test MSE.</p>
+
+		<h4>Linear Regression Coefficient Analysis</h4>
+		<table>
+			<tr><th>Feature</ht><th>Coefficient</th></tr>
+			<tr><td>longitude</td><td>-0.45812601479699366</td></tr>
+<tr><td>latitude</td><td>-0.46431277409815747</td></tr>
+<tr><td>housing_median_age</td><td>0.11986983940729154</td></tr>
+<tr><td>total_rooms</td><td>-0.13455088716681465</td></tr>
+<tr><td>total_bedrooms</td><td>0.3834791857036053</td></tr>
+<tr><td>population</td><td>-0.3710856029997662</td></tr>
+<tr><td>households</td><td>0.16734830039529763</td></tr>
+<tr><td>median_income</td><td>0.6488680957604169</td></tr>
+<tr><td>ocean_proximity_&lt;1H OCEAN</td><td>48898112193.45528</td></tr>
+<tr><td>ocean_proximity_INLAND</td><td>45822997492.161415</td></tr>
+<tr><td>ocean_proximity_ISLAND</td><td>1532063794.3626084</td></tr>
+<tr><td>ocean_proximity_NEAR BAY</td><td>30918996218.669323</td></tr>
+<tr><td>ocean_proximity_NEAR OCEAN</td><td>32975098056.660057</td></tr>
+		</table>
+		<p>Of note are the riduculous values for the ocean_proximity values. It is important to remember that all values were standardized, and these were one-hot encodings, so a high value in one will cancel the others out. The only real apparent conclusion is that islands are apparently cheap to live on. The latitude and longitude values indicate southwestern areas are more expensive. High population seems to reduce value, which it probably just a symptom of california's very expensive suburbs. Total rooms also strangely decreases it. I would guess the correlation is that rural areas are cheaper and also have more room.</p>
+
+		<h4>Conclusion</h4>
+		<p>The goals of this project overall were met. Models were developed to predict housing prices, and they are accurate enough, with less than .2 MSE. I also was able to determine what the most important factors in house prices are, and how important location is.</p>
+		
+
+	</body>
+</html>
